@@ -135,7 +135,7 @@ function flip_card(){
       stars();
       var card1Id = first_card.card_id;
       var card2Id = second_card.card_id;
-      timer = window.setInterval(reset_flip, 1000, card1Id, card2Id);
+      timer = window.setInterval(reset_flip, 500, card1Id, card2Id);
 
     }
   }
