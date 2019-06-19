@@ -1,4 +1,3 @@
-
 const deck = document.getElementsByClassName('card_image');
 const card_front = "snowflake-regular.svg";
 const card_back1 = "socks-solid.svg";
@@ -28,6 +27,18 @@ var stop_clock = null;
 var seconds = 0;
 var minutes = 0;
 
+function activate(element_card1, element_card2){
+  element_card1.style.pointerEvents = 'auto';
+  element_card2.style.pointerEvents = 'auto';
+}
+
+function reset_active(){
+  for(var i = 0; i < deck.length; i++){
+    let card = deck[i];
+    card.style.pointerEvents = 'auto';
+  };
+}
+
 function clear_card_info(){
   //  set card key- values to null.
   first_card.card_id = null;
@@ -52,6 +63,9 @@ function increment(){
 
 
 function stars(){
+  if(star_count < 0){
+    star_count = 0;
+  }
   if(star_count > 3){
     //pass
   }
@@ -91,16 +105,19 @@ function clear_congrats(){
   element.innerHTML = message;
 
 }
-
-
+// ------------------------//
+//   Main functio of game:
+//--------------------------//
 function flip_card(){
   //alert("card flipped, event listener active");
   moves += 1;
   var card_id = this.id;
   var new_src = card_img_obj.get(card_id);
   var back_image = new_src.toString();
+  var element = document.getElementById(card_id);
+  element.style.pointerEvents = 'none';
   this.src = back_image;
-
+  //  if block execution of match responses
   if(!flipped_card){
   flipped_card = true;
   first_card.card_id = card_id;
@@ -135,12 +152,33 @@ function flip_card(){
       stars();
       var card1Id = first_card.card_id;
       var card2Id = second_card.card_id;
-      timer = window.setInterval(reset_flip, 500, card1Id, card2Id);
+      var card1_element = document.getElementById(card1Id);
+      var card2_element = document.getElementById(card2Id);
 
+      timer = window.setInterval(reset_flip, 500, card1Id, card2Id);
+      activate(card1_element, card2_element);
     }
   }
 };
 
+
+
+function reset_flip(card1_id, card2_id){
+  // reset first_card, second_card, set values to null
+  window.clearInterval(timer);
+  flipped_card = false;
+  element1 = document.getElementById(card1_id);
+  element2 = document.getElementById(card2_id);
+  element1.src = card_front;
+  element2.src = card_front;
+  clear_card_info();
+;}
+
+
+
+//--------------------------------//
+//   shuffling and assigning img  //
+//--------------------------------//
 function assign_imgs(imgArray1, imgArray2, card_map, deck){
   var indeck = 0;
   //assign first shuffled images to map
@@ -173,21 +211,7 @@ function shuffleArray(array) {
     };
 }
 
-
-
-function reset_flip(card1_id, card2_id){
-  // reset first_card, second_card, set values to null
-  console.log("reset_flip activated");
-  console.log(card1_id);
-  console.log(card2_id);
-  window.clearInterval(timer);
-  flipped_card = false;
-  element1 = document.getElementById(card1_id);
-  element2 = document.getElementById(card2_id);
-  element1.src = card_front;
-  element2.src = card_front;
-  clear_card_info();
-;}
+//old location reset_flip()
 
 
 function clear_clock(){
@@ -199,8 +223,12 @@ function clear_clock(){
 };
 
 function run_game(){
+  var button = document.getElementById("play_button");
+  button.innerHTML = "New Game";
   clear_clock();
   clear_congrats();
+  reset_active();
+  star_count = 0;
   moves = 0;
   matches_found = 0;
   flipped_card = false;
@@ -210,6 +238,7 @@ function run_game(){
     element.addEventListener("click", flip_card);
     element.src = card_front;
   };
+  stars();
   shuffleArray(img_array1);
   shuffleArray(img_array2);
   assign_imgs(img_array1, img_array2, card_img_obj, deck_card_names);
