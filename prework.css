@@ -1,0 +1,151 @@
+/* static custom css -- Nellie Tobey -- nelliesnoodles --Chingu pre--work*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+
+img {
+  display: block;
+  height: 50%;
+  width: 50%;
+  margin-top: 25%;
+  margin-bottom: 25%;
+  margin-left: 25%;
+}
+body {
+  background-image: radial-gradient(circle, black, purple, grey);
+  height:100vh;
+  width: auto;
+  font-family: 'Audiowide';font-size: 22px;
+}
+
+.congrats {
+  content: "";
+  position: relative;
+  margin: auto;
+  padding: auto;
+  background: rgba(21, 15, 32, 0.9);
+  text-align: center;
+}
+
+.front_face{
+  visibility: visible;
+  position: absolute;
+  border-radius: 10px;
+  border: solid 5px white;
+  width: 100%;
+  height: 100%;
+  background-color: #cab9ea;
+
+}
+.back_face {
+  visibility: visible;
+  position: absolute;
+  border-radius: 10px;
+  border: solid 5px white;
+  width: 100%;
+  height: 100%;
+  background-color: #cab9ea;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(21, 15, 32, 0.9);
+  width: 440px;
+  height: 440px;
+  border: solid 5px black;
+  margin: auto;
+}
+.card {
+  border: solid 5px #a00869;
+  background-color: #cab9ea;
+  border-radius: 10px;
+  position: relative;
+  height: calc(25% - 10px);
+  width: calc(25% - 10px);
+  margin: 5px;
+}
+
+.card:active {
+  transform: scale(1.25, 1.25);
+  transition: .3s;
+}
+.star_check {
+  color: blue;
+
+}
+.btn-outline-primary {
+    padding:0.3em 1.2em;
+    color: black;
+    border-color: purple;
+    border-radius: 3em;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    text-align:center;
+}
+
+h4 {
+  color:  #2d1c44;
+}
+
+#line {
+    border-bottom: 5px solid;
+    border-color:   #112711;
+    width: 100%;
+    height: 8px;
+}
+
+h1, h2 {
+  color: #073F5D;
+  text-align: center;
+}
+
+#nav_bar.banner{
+  /* absolute means the rest of the content ignores it's placement */
+  padding-top: 0px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  background: #DDEEEE; /* pale blue */
+  width: 100%;
+  height: 40px;
+}
+.banner{
+  /* absolute means the rest of the content ignores it's placement */
+  padding-top: 0px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  background: #DDEEEE; /* pale blue */
+  width: 100%;
+  height: 40px;
+}
+
+#github-image.a{
+    color: #4a3e54;
+    font-size: initial;
+
+}
+
+.banner {
+
+  text-align: center;
+  padding-top: 10px;
+  margin: auto;
+  width: 100%;
+  background-color: #CDD9EC   /* grey blue */
+}
+#gradiant.banner {
+  background-image: linear-gradient(#CDD9EC, #A7D9C7);
+}
+#gradiant2.banner {
+  background-image: linear-gradient(#CDD9EC, #7C7A76);
+  margin-top: 20px;
+}
+
+a {
+  color: #553b6c;
+  font-size: 1.5em;
+}
