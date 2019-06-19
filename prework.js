@@ -105,15 +105,15 @@ function flip_card(){
   flipped_card = true;
   first_card.card_id = card_id;
   first_card.new_src = back_image;
-  console.log("first card source = ");
-  console.log(first_card.new_src);
+  //console.log("first card source = ");
+  //console.log(first_card.new_src);
   }
 
   else if(flipped_card){
 
     second_card.card_id = card_id;
     second_card.new_src = back_image;
-    console.log(second_card.new_src);
+    //console.log(second_card.new_src);
     flipped_card = false;
     //console.log(first_card.new_src);
     if(first_card.new_src === second_card.new_src){
@@ -202,6 +202,7 @@ function run_game(){
   clear_clock();
   clear_congrats();
   moves = 0;
+  matches_found = 0;
   flipped_card = false;
   for (let i=0; i<deck.length; i++){
     let element = deck[i];
