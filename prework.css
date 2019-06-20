@@ -67,16 +67,15 @@ body {
   height: calc(25% - 10px);
   width: calc(25% - 10px);
   margin: 5px;
+
 }
 
 .card:active {
   transform: scale(1.25, 1.25);
   transition: .3s;
 }
-.star_check {
-  color: blue;
 
-}
+
 .btn-outline-primary {
     padding:0.3em 1.2em;
     color: black;
@@ -97,9 +96,14 @@ h4 {
     height: 8px;
 }
 
-h1, h2 {
+h2 {
   color: #073F5D;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #DDEEEE; /* pale blue */
+  width: 100vw;
+  height: 40px;
 }
 
 #nav_bar.banner{
@@ -112,16 +116,18 @@ h1, h2 {
   width: 100%;
   height: 40px;
 }
+
 .banner{
   /* absolute means the rest of the content ignores it's placement */
-  padding-top: 0px;
-  margin: auto;
-  top: 0;
-  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #DDEEEE; /* pale blue */
-  width: 100%;
+  width: 100vw;
   height: 40px;
+
 }
+
 
 #github-image.a{
     color: #4a3e54;
@@ -129,14 +135,7 @@ h1, h2 {
 
 }
 
-.banner {
 
-  text-align: center;
-  padding-top: 10px;
-  margin: auto;
-  width: 100%;
-  background-color: #CDD9EC   /* grey blue */
-}
 #gradiant.banner {
   background-image: linear-gradient(#CDD9EC, #A7D9C7);
 }
