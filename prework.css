@@ -96,6 +96,7 @@ body {
 
 h4 {
   color:  #2d1c44;
+  width: 100vw;
 }
 
 h2 {
@@ -111,6 +112,7 @@ h2 {
 h1 {
   color: #DDEEEE;
   font-size: 1em;
+  width: 100vw;
 }
 
 #nav_bar.banner{
