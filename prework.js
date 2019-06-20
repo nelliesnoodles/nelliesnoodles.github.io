@@ -57,11 +57,12 @@ function increment(){
 
   time_element_minutes.innerHTML = minutes;
   time_element_seconds.innerHTML = seconds;
-  //alert(time_element_seconds);
+  
 };
 
 
 function stars(){
+  // color of card border: #a00869
   if(star_count < 0){
     star_count = 0;
   }
@@ -70,15 +71,15 @@ function stars(){
   }
   else if(star_count == 3){
     star = document.getElementById('star3');
-    star.style.color = 'blue';
+    star.style.color = '#a00869';
   }
   else if(star_count == 2){
     star = document.getElementById('star2');
-    star.style.color = 'blue';
+    star.style.color = '#a00869';
   }
   else if(star_count == 1){
     star = document.getElementById('star1');
-    star.style.color = 'blue';
+    star.style.color = '#a00869';
   }
   else{
       star_count = 0;
@@ -128,8 +129,7 @@ function flip_card(){
   flipped_card = true;
   first_card.card_id = card_id;
   first_card.new_src = back_image;
-  //console.log("first card source = ");
-  //console.log(first_card.new_src);
+
   }
 
   else if(flipped_card){
