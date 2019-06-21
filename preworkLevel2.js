@@ -140,7 +140,7 @@ function reset_flip_first(card1_id, card2_id){
 function reset_flip_third(card1_id, card2_id, card3_id){
   // reset first_card, second_card, & third card set values to null
   window.clearInterval(timer);
-  alert("reset flip of the third kind")
+  //alert("reset flip of the third kind")
   flipped_card = false;
   element1 = document.getElementById(card1_id);
   element2 = document.getElementById(card2_id);
@@ -175,7 +175,7 @@ function flip_card(){
 
   if(!flipped_card){
     // first card selected:
-    console.log("first card selected");
+    //console.log("first card selected");
     flipped_card = true;
     first_card.card_id = card_id;
     first_card.new_src = back_image;
@@ -184,7 +184,7 @@ function flip_card(){
 
   else if(flipped_card === true && second_card_match === false){
     // second card selected
-    console.log("second card selected")
+    //console.log("second card selected")
     second_card.card_id = card_id;
     second_card.new_src = back_image;
     if(first_card.new_src === second_card.new_src){
@@ -209,13 +209,13 @@ function flip_card(){
     }
   }
     else{
-      console.log("third card selected")
+      //console.log("third card selected")
       third_card.card_id = card_id;
       third_card.new_src = back_image;
       flipped_card = false;
       second_card_match = false;
       if(first_card.new_src === second_card.new_src && second_card.new_src === third_card.new_src){
-        console.log("third match!")
+        //console.log("third match!")
         //  it's a three way MATCH
         // do not activate, do not reset flip
         matches_found += 1;
