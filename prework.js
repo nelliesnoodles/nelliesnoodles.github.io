@@ -255,6 +255,7 @@ function run_game(){
     let element = deck[i];
     element.addEventListener("click", flip_card);
     element.src = card_front;
+    element.style.backgroundColor = back_color;
   };
   stars();
   shuffleArray(img_array1);
