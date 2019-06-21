@@ -8,6 +8,8 @@ const card_back5 = "canadian-maple-leaf-brands.svg";
 const card_back6 = "cloud-sun-rain-solid.svg";
 const card_back7 = "pagelines-brands.svg";
 const card_back8 = "tree-solid.svg";
+const back_color = "#c060fa";
+const front_color = "#eddbf9";
 var img_array1 = [card_back1, card_back2, card_back3, card_back4, card_back5, card_back6, card_back7, card_back8];
 var img_array2 = [card_back1, card_back2, card_back3, card_back4, card_back5, card_back6, card_back7, card_back8];
 const deck_card_names = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen']
@@ -57,12 +59,11 @@ function increment(){
 
   time_element_minutes.innerHTML = minutes;
   time_element_seconds.innerHTML = seconds;
-  
+  //alert(time_element_seconds);
 };
 
 
 function stars(){
-  // color of card border: #a00869
   if(star_count < 0){
     star_count = 0;
   }
@@ -71,15 +72,15 @@ function stars(){
   }
   else if(star_count == 3){
     star = document.getElementById('star3');
-    star.style.color = '#a00869';
+    star.style.color = 'blue';
   }
   else if(star_count == 2){
     star = document.getElementById('star2');
-    star.style.color = '#a00869';
+    star.style.color = 'blue';
   }
   else if(star_count == 1){
     star = document.getElementById('star1');
-    star.style.color = '#a00869';
+    star.style.color = 'blue';
   }
   else{
       star_count = 0;
@@ -121,6 +122,7 @@ function flip_card(){
   var element = document.getElementById(card_id);
   element.style.pointerEvents = 'none';
   this.src = back_image;
+  this.style.backgroundColor = front_color;
 
   //    ---- logic operators ----
 
@@ -129,7 +131,8 @@ function flip_card(){
   flipped_card = true;
   first_card.card_id = card_id;
   first_card.new_src = back_image;
-
+  //console.log("first card source = ");
+  //console.log(first_card.new_src);
   }
 
   else if(flipped_card){
@@ -177,6 +180,8 @@ function reset_flip(card1_id, card2_id){
   element2 = document.getElementById(card2_id);
   element1.src = card_front;
   element2.src = card_front;
+  element1.style.backgroundColor = back_color;
+  element2.style.backgroundColor = back_color;
   clear_card_info();
 ;}
 
