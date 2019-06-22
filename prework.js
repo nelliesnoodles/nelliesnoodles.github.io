@@ -166,12 +166,12 @@ function flip_card(){
 
   if(!flipped_card){
     // first card selected:
-  flipped_card = true;
-  first_card.card_id = card_id;
-  first_card.new_src = back_image;
-  //console.log("first card source = ");
-  //console.log(first_card.new_src);
-  }
+
+    flipped_card = true;
+    first_card.card_id = card_id;
+    first_card.new_src = back_image;
+
+    }
 
   else if(flipped_card){
     // second card selected
@@ -204,6 +204,7 @@ function flip_card(){
     else{
       // it's NOT a MATCH
       // deactivate all unmatched cards:
+      deactivate_all();
       flipped_card = false;
       star_count -= 1;
       stars();
