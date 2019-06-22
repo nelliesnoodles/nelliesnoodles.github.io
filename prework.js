@@ -15,6 +15,7 @@ var img_array2 = [card_back1, card_back2, card_back3, card_back4, card_back5, ca
 const deck_card_names = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen']
 var card_img_obj = new Map();
 //  game variables
+const matched_cards = [];
 var flipped_card = false;
 var first_card = {'card_id': null, 'new_src': null};
 var second_card = {'card_id': null, 'new_src': null};
@@ -28,10 +29,33 @@ var stop_clock = null;
 var seconds = 0;
 var minutes = 0;
 
-function activate(element_card1, element_card2){
-  element_card1.style.pointerEvents = 'auto';
-  element_card2.style.pointerEvents = 'auto';
+
+
+function deactivate_all(){
+  for(var i = 0; i < deck.length; i++){
+    let card = deck[i];
+    card.style.pointerEvents = 'none';
+  };
+
 }
+
+function activate_all_unmatched(){
+  var matched_length = matched_cards.length;
+  console.log(matched_length);
+
+  for(var i=0; i< deck.length; i++){
+    var element = deck[i];
+    var card_id = element.getAttribute("id");
+    if(matched_cards.includes(card_id)){
+      //pass
+    }
+    else{
+    element.style.pointerEvents = 'auto';
+    element.src = card_front;
+    element.style.backgroundColor = back_color;
+    }
+  }; // for loop
+};
 
 function reset_active(){
   for(var i = 0; i < deck.length; i++){
@@ -71,22 +95,22 @@ function stars(){
     star_count = 3;
   }
   else if(star_count == 3){
-    var star = document.getElementById('star3');
+    star = document.getElementById('star3');
     star.style.color = 'blue';
   }
   else if(star_count == 2){
-    var star = document.getElementById('star2');
+    star = document.getElementById('star2');
     star.style.color = 'blue';
   }
   else if(star_count == 1){
-    var star = document.getElementById('star1');
+    star = document.getElementById('star1');
     star.style.color = 'blue';
   }
   else{
       star_count = 0;
-      var star1 = document.getElementById('star3');
-      var star2 = document.getElementById('star2');
-      var star3 = document.getElementById('star1');
+      star1 = document.getElementById('star3');
+      star2 = document.getElementById('star2');
+      star3 = document.getElementById('star1');
       star1.style.color = 'black';
       star2.style.color = 'black';
       star3.style.color = 'black';
@@ -106,6 +130,17 @@ function clear_congrats(){
   element.innerHTML = message;
 
 }
+
+
+function reset_flip(){
+  // reset first_card, second_card, set values to null
+  window.clearInterval(timer);
+  flipped_card = false;
+  clear_card_info();
+  activate_all_unmatched();
+
+;}
+
 
 
 // ------------------------//
@@ -144,6 +179,14 @@ function flip_card(){
       //  it's a MATCH
       matches_found += 1;
       star_count += 1;
+      // add card id string to matched_cards
+
+      var first_element = document.getElementById(first_card.card_id);
+      var second_element = document.getElementById(second_card.card_id);
+      var first = first_element.getAttribute("id");
+      var second = second_element.getAttribute("id");
+      matched_cards.push(first);
+      matched_cards.push(second);
       stars();
       clear_card_info();
 
@@ -155,35 +198,21 @@ function flip_card(){
 
     else{
       // it's NOT a MATCH
-
+      // deactivate all unmatched cards:
+      deactivate_all();
       flipped_card = false;
       star_count -= 1;
       stars();
-      var card1Id = first_card.card_id;
-      var card2Id = second_card.card_id;
-      var card1_element = document.getElementById(card1Id);
-      var card2_element = document.getElementById(card2Id);
+
       // setting the interval here keeps the card images from changing too fast
-      timer = window.setInterval(reset_flip, 500, card1Id, card2Id);
-      activate(card1_element, card2_element);
+      timer = window.setInterval(reset_flip, 500);
+      // activation of matched cards occurs in reset_flip
+
     }
   }
 };
 
 
-
-function reset_flip(card1_id, card2_id){
-  // reset first_card, second_card, set values to null
-  window.clearInterval(timer);
-  flipped_card = false;
-  element1 = document.getElementById(card1_id);
-  element2 = document.getElementById(card2_id);
-  element1.src = card_front;
-  element2.src = card_front;
-  element1.style.backgroundColor = back_color;
-  element2.style.backgroundColor = back_color;
-  clear_card_info();
-;}
 
 
 
