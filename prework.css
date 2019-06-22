@@ -52,8 +52,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   background: #073F5D;
-  width: 440px;
-  height: 440px;
+  padding-top: 5vh;
+  width: 70vw;
+  height: 70vh;
   border: solid 5px black;
   margin: auto;
 }
