@@ -282,6 +282,7 @@ function run_game(){
   clear_congrats();
   reset_active();
   empty_matches();
+  clear_card_info();
   star_count = 0;
   moves = 0;
   matches_found = 0;
