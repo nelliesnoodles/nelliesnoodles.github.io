@@ -40,8 +40,6 @@ function deactivate_all(){
 }
 
 function activate_all_unmatched(){
-  var matched_length = matched_cards.length;
-  console.log(matched_length);
 
   for(var i=0; i< deck.length; i++){
     var element = deck[i];
@@ -57,12 +55,6 @@ function activate_all_unmatched(){
   }; // for loop
 };
 
-function reset_active(){
-  for(var i = 0; i < deck.length; i++){
-    let card = deck[i];
-    card.style.pointerEvents = 'auto';
-  };
-}
 
 function clear_card_info(){
   //  set card key- values to null.
@@ -172,6 +164,7 @@ function flip_card(){
 
   else if(flipped_card){
     // second card selected
+    deactivate_all();
     second_card.card_id = card_id;
     second_card.new_src = back_image;
     flipped_card = false;
@@ -189,6 +182,7 @@ function flip_card(){
       matched_cards.push(second);
       stars();
       clear_card_info();
+      activate_all_unmatched();
 
       if(matches_found >= 8){
         congrats()
@@ -199,7 +193,6 @@ function flip_card(){
     else{
       // it's NOT a MATCH
       // deactivate all unmatched cards:
-      deactivate_all();
       flipped_card = false;
       star_count -= 1;
       stars();
