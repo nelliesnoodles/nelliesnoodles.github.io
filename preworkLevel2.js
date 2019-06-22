@@ -223,7 +223,7 @@ function flip_card(){
         stars();
         clear_card_info();
 
-        if(matches_found >= 16){
+        if(matches_found >= 8){
           congrats()
           clear_clock();
         }
