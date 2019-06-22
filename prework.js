@@ -71,22 +71,22 @@ function stars(){
     star_count = 3;
   }
   else if(star_count == 3){
-    star = document.getElementById('star3');
+    var star = document.getElementById('star3');
     star.style.color = 'blue';
   }
   else if(star_count == 2){
-    star = document.getElementById('star2');
+    var star = document.getElementById('star2');
     star.style.color = 'blue';
   }
   else if(star_count == 1){
-    star = document.getElementById('star1');
+    var star = document.getElementById('star1');
     star.style.color = 'blue';
   }
   else{
       star_count = 0;
-      star1 = document.getElementById('star3');
-      star2 = document.getElementById('star2');
-      star3 = document.getElementById('star1');
+      var star1 = document.getElementById('star3');
+      var star2 = document.getElementById('star2');
+      var star3 = document.getElementById('star1');
       star1.style.color = 'black';
       star2.style.color = 'black';
       star3.style.color = 'black';
