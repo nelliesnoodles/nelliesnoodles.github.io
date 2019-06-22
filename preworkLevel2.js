@@ -17,6 +17,7 @@ const deck_card_names = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 
                          'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty-one', 'twenty-two', 'twenty-three', 'twenty-four'];
 var card_img_obj = new Map();
 //  game variables
+var matched_cards = [];
 var flipped_card = false;
 var second_card_match = false;
 var first_card = {'card_id': null, 'new_src': null};
@@ -35,14 +36,30 @@ var minutes = 0;
 function activate_first_set(element_card1, element_card2){
   element_card1.style.pointerEvents = 'auto';
   element_card2.style.pointerEvents = 'auto';
-}
+};
 
-function activate_all(element_card1, element_card2, element_card3){
-  element_card1.style.pointerEvents = 'auto';
-  element_card2.style.pointerEvents = 'auto';
-  element_card3.style.pointerEvents = 'auto';
-}
+function activate_all_unmatched(){
+  for(var i=0; i< deck.length; i++){
+    var element = deck[i];
+    var card_id = element.id;
+    if(matched_cards.includes(card_id)){
+      //pass
+    }
+    else{
+      element.style.pointerEvents = 'auto';
+      element.src = card_front;
+      element.style.backgroundColor = back_color;
+    }
+  }; // for loop
+};
 
+function deactivate_all(){
+  for(var i = 0; i < deck.length; i++){
+    let card = deck[i];
+    card.style.pointerEvents = 'none';
+  };
+
+}
 function reset_active(){
   for(var i = 0; i < deck.length; i++){
     let card = deck[i];
@@ -123,16 +140,8 @@ function reset_flip_first(card1_id, card2_id){
   // reset first_card, second_card, set values to null
   window.clearInterval(timer);
   flipped_card = false;
-  element1 = document.getElementById(card1_id);
-  element2 = document.getElementById(card2_id);
-
-  element1.src = card_front;
-  element2.src = card_front;
-
-  element1.style.backgroundColor = back_color;
-  element2.style.backgroundColor = back_color;
-
   clear_card_info();
+  activate_all_unmatched();
 ;}
 
 
@@ -140,19 +149,10 @@ function reset_flip_first(card1_id, card2_id){
 function reset_flip_third(card1_id, card2_id, card3_id){
   // reset first_card, second_card, & third card set values to null
   window.clearInterval(timer);
-  //alert("reset flip of the third kind")
+  alert("reset flip of the third kind")
   flipped_card = false;
-  element1 = document.getElementById(card1_id);
-  element2 = document.getElementById(card2_id);
-  element3 = document.getElementById(card3_id);
-  element1.src = card_front;
-  element2.src = card_front;
-  element3.src = card_front;
-  element1.style.backgroundColor = back_color;
-  element2.style.backgroundColor = back_color;
-  element3.style.backgroundColor = back_color;
-  console.log(element1.src, element2.src, element3.src);
   clear_card_info();
+  activate_all_unmatched();
 ;}
 
 // ------------------------//
@@ -175,7 +175,7 @@ function flip_card(){
 
   if(!flipped_card){
     // first card selected:
-    //console.log("first card selected");
+    console.log("first card selected");
     flipped_card = true;
     first_card.card_id = card_id;
     first_card.new_src = back_image;
@@ -184,7 +184,7 @@ function flip_card(){
 
   else if(flipped_card === true && second_card_match === false){
     // second card selected
-    //console.log("second card selected")
+    console.log("second card selected")
     second_card.card_id = card_id;
     second_card.new_src = back_image;
     if(first_card.new_src === second_card.new_src){
@@ -193,31 +193,36 @@ function flip_card(){
       console.log("second card match")
     }
     else{
+      deactivate_all();
       // NOT a match, reset
       flipped_card = false;
       second_card_match = false;
-      //star_count -= 1;
-      //stars();
+      star_count -= 1;
+      stars();
       var card1Id = first_card.card_id;
       var card2Id = second_card.card_id;
       var card1_element = document.getElementById(card1Id);
       var card2_element = document.getElementById(card2Id);
       // setting the interval here keeps the card images from changing too fast
       timer = window.setInterval(reset_flip_first, 500, card1Id, card2Id);
-      activate_first_set(card1_element, card2_element);
+      // in the reset_flip() activate_all_unmatched();
 
     }
   }
     else{
-      //console.log("third card selected")
+      console.log("third card selected")
       third_card.card_id = card_id;
       third_card.new_src = back_image;
       flipped_card = false;
       second_card_match = false;
       if(first_card.new_src === second_card.new_src && second_card.new_src === third_card.new_src){
-        //console.log("third match!")
+        console.log("third match!")
         //  it's a three way MATCH
         // do not activate, do not reset flip
+        // add card.id to array: matched_cards
+        matched_cards.push(first_card.id);
+        matched_cards.push(second_card.id);
+        matched_cards.push(third_card.id);
         matches_found += 1;
         star_count += 1;
         stars();
@@ -230,6 +235,8 @@ function flip_card(){
       }
 
       else{
+        // NOT a match
+        deactivate_all();
         console.log("not a 3 card match!")
         // card info cleared in activate_all()
         var card1Id = first_card.card_id;
@@ -240,7 +247,6 @@ function flip_card(){
         var card3_element = document.getElementById(card3Id);
         // setting the interval here keeps the card images from changing too fast
         timer = window.setInterval(reset_flip_third, 500, card1Id, card2Id, card3Id);
-        activate_all(card1_element, card2_element, card3_element);
 
       }
     }
