@@ -30,14 +30,25 @@ var seconds = 0;
 var minutes = 0;
 
 
+function empty_matches(){
+  while(matched_cards.length > 0){
+    matched_cards.pop();
+  };
+};
 
 function deactivate_all(){
   for(var i = 0; i < deck.length; i++){
     let card = deck[i];
     card.style.pointerEvents = 'none';
   };
+};
 
-}
+function reset_active(){
+  for(var i = 0; i < deck.length; i++){
+    let card = deck[i];
+    card.style.pointerEvents = 'auto';
+  };
+};
 
 function activate_all_unmatched(){
 
@@ -269,6 +280,7 @@ function run_game(){
   clear_clock();
   clear_congrats();
   reset_active();
+  empty_matches();
   star_count = 0;
   moves = 0;
   matches_found = 0;
