@@ -50,24 +50,30 @@ body {
   background-color: #cab9ea;
 }
 
+
 .board {
   display: flex;
   flex-wrap: wrap;
   background: #073F5D;
-  width: 440px;
-  height: 440px;
+  padding-top: 5vh;
+  width: 100vw;
+  height: 100vh;
   border: solid 5px black;
   margin: auto;
 }
 
 .card {
+  flex-wrap: nowrap;
+  padding-top: 0;
   border: solid 5px #a00869;
   background-color: #c060fa;
   border-radius: 10px;
   position: relative;
   height: 16%;
   width: 16%;
-  margin: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 2px;
 
 }
 

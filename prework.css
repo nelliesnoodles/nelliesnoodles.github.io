@@ -59,6 +59,7 @@ body {
   margin: auto;
 }
 .card {
+  flex-wrap: nowrap;
   border: solid 5px #a00869;
   background-color: #c060fa;
   border-radius: 10px;

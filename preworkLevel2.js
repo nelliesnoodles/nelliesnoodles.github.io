@@ -34,11 +34,6 @@ var stop_clock = null;
 var seconds = 0;
 var minutes = 0;
 
-function activate_first_set(element_card1, element_card2){
-  element_card1.style.pointerEvents = 'auto';
-  element_card2.style.pointerEvents = 'auto';
-};
-
 function activate_all_unmatched(){
   var matched_length = matched_cards.length;
   console.log(matched_length);
@@ -204,6 +199,7 @@ function flip_card(){
   }
     else{
       //console.log("third card selected")
+      deactivate_all();
       third_card.card_id = card_id;
       third_card.new_src = back_image;
       flipped_card = false;
@@ -226,6 +222,7 @@ function flip_card(){
         star_count += 1;
         stars();
         clear_card_info();
+        activate_all_unmatched();
 
         if(matches_found >= 8){
           congrats()
@@ -306,12 +303,21 @@ function clear_clock(){
   minutes = 0;
 };
 
+
+function empty_matches(){
+  while(matched_cards.length > 0){
+    matched_cards.pop();
+  };
+};
+
 function run_game(){
   var button = document.getElementById("play_button");
   button.innerHTML = "New Game";
   clear_clock();
   clear_congrats();
   reset_active();
+  empty_matches();
+
   star_count = 0;
   moves = 0;
   matches_found = 0;
