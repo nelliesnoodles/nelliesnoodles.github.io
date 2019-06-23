@@ -150,6 +150,18 @@ h1 {
   height: 40px;
 }
 
+
+.banner_foot{
+  display: inline-block;
+  text-align: center;
+  margin: auto;
+  padding: auto;
+  background-color: #DDEEEE; /* pale blue */
+  width: 100vw;
+  height: 40px;
+  font-size: .8em;
+}
+
 .banner{
   /* absolute means the rest of the content ignores it's placement */
   display: flex;
@@ -176,10 +188,12 @@ h1 {
   background-image: linear-gradient(#CDD9EC, #7C7A76);
   margin-top: 20px;
 }
+
 .small-link{
   font-size: 1em;
   color: black;
 }
+
 a {
   color: #553b6c;
   font-size: 1.5em;
