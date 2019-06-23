@@ -149,10 +149,15 @@ h1 {
   margin-top: 20px;
 }
 
-a {
+.link_footer{  
   display: inline-block;
   margin: auto;
+  text-align: center;
+  justify-content: space-around;
+}
+  
+
+a {
   color: black;
-  font-size: 1em;
- 
+  font-size: 1em; 
 }
