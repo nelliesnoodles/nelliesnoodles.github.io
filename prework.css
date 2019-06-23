@@ -161,5 +161,6 @@ h1 {
 a {
   color: black;
   font-size: 1em; 
-  margin: auto;
+  margin: 5px;
+  padding: 5px;
 }
