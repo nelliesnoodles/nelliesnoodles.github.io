@@ -131,7 +131,7 @@ h2 {
   justify-content: center;
   background: #DDEEEE; /* pale blue */
   width: 100vw;
-  height: 40px;
+  font-size: 1em;
 }
 
 h1 {
