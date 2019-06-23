@@ -152,7 +152,10 @@ h1 {
   background-image: linear-gradient(#CDD9EC, #7C7A76);
   margin-top: 20px;
 }
-
+.small-link{
+  font-size: 1em;
+  color: black;
+}
 a {
   color: #553b6c;
   font-size: 1.5em;
