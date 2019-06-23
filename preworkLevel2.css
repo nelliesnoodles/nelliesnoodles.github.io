@@ -61,6 +61,22 @@ body {
   margin: auto;
 }
 
+
+.center_tile {
+  flex-wrap: nowrap;
+  padding-top: 0;
+  border: solid 5px #a00869;
+  background-color: #c060fa;
+  border-radius: 10px;
+  position: relative;
+  height: 17%;
+  width: 17%;
+  margin: auto;
+  text-align: center;
+  font-size: .75em;
+
+}
+
 .card {
   flex-wrap: nowrap;
   padding-top: 0;
@@ -89,9 +105,6 @@ body {
     text-align:center;
 }
 
-h4 {
-  color:  #2d1c44;
-}
 
 #line {
     border-bottom: 5px solid;
@@ -99,6 +112,17 @@ h4 {
     width: 100%;
     height: 8px;
 }
+
+h5 {
+  color:  #2d1c44;
+  text-align: center;
+  background: #DDEEEE;
+}
+
+h4 {
+  color:  #2d1c44;
+}
+
 
 h2 {
   color: #073F5D;
